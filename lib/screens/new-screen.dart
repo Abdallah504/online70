@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../widgets/custome-list.dart';
+
 class NewScreen extends StatefulWidget {
   const NewScreen({super.key});
 
@@ -48,11 +50,7 @@ class _NewScreenState extends State<NewScreen> {
                 physics: BouncingScrollPhysics(),
                 shrinkWrap: true,
                 itemBuilder: (context,index){
-                  return ListTile(
-                    leading: Image.network('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTUVRLBKuNbmxzQBsPEBkVBsnA_LKK4xpZJg&s'),
-                    title: Text('Bmw',style: TextStyle(fontSize: 17.sp),),
-                    subtitle: Text('2024',style: TextStyle(fontSize: 14.sp),),
-                  );
+                  return BmwList(title: 'Ford',);
                 })
           ],
         ),
