@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:online70/logic/cache-helper.dart';
 import 'package:online70/logic/sql-db.dart';
+import 'package:online70/model/diary.dart';
+import 'package:online70/screens/diary/diary-list.dart';
 import 'package:online70/screens/login-screen.dart';
 import 'package:online70/screens/new-screen.dart';
 import 'package:online70/screens/note-list.dart';
@@ -10,8 +13,11 @@ import 'package:online70/screens/note-list.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.cacheIntialization();
-  SqlDB sqlDB = SqlDB();
-  await sqlDB.db;
+  // SqlDB sqlDB = SqlDB();
+  // await sqlDB.db;
+  await Hive.initFlutter();
+  Hive.registerAdapter(DiaryAdapter());
+  await Hive.openBox<Diary>('diary');
   runApp(const MyApp());
 }
 
@@ -46,7 +52,7 @@ class _MyAppState extends State<MyApp> {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home:savedEmail!=null && savedPass !=null?NoteList(): LoginScreen() ,
+          home:savedEmail!=null && savedPass !=null?DiaryList(): LoginScreen() ,
         );
       },
     );
