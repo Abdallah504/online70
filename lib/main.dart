@@ -4,7 +4,9 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:online70/logic/cache-helper.dart';
 import 'package:online70/logic/sql-db.dart';
+import 'package:online70/model/contact.dart';
 import 'package:online70/model/diary.dart';
+import 'package:online70/screens/contacts/contact-List.dart';
 import 'package:online70/screens/diary/diary-list.dart';
 import 'package:online70/screens/login-screen.dart';
 import 'package:online70/screens/new-screen.dart';
@@ -16,8 +18,10 @@ void main() async{
   // SqlDB sqlDB = SqlDB();
   // await sqlDB.db;
   await Hive.initFlutter();
-  Hive.registerAdapter(DiaryAdapter());
-  await Hive.openBox<Diary>('diary');
+  //Hive.registerAdapter(DiaryAdapter());
+  Hive.registerAdapter(ContactAdapter());
+  //await Hive.openBox<Diary>('diary');
+  await Hive.openBox<Contact>('contact');
   runApp(const MyApp());
 }
 
@@ -29,16 +33,16 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  var cache = CacheHelper();
-  dynamic savedEmail;
-  dynamic savedPass;
-  @override
-  void initState() {
-    savedEmail = cache.getData(key: 'email');
-    savedPass = cache.getData(key: 'password');
-    print('${savedEmail} , ${savedPass}' );
-    super.initState();
-  }
+  // var cache = CacheHelper();
+  // dynamic savedEmail;
+  // dynamic savedPass;
+  // @override
+  // void initState() {
+  //   savedEmail = cache.getData(key: 'email');
+  //   savedPass = cache.getData(key: 'password');
+  //   print('${savedEmail} , ${savedPass}' );
+  //   super.initState();
+  // }
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
@@ -52,7 +56,7 @@ class _MyAppState extends State<MyApp> {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home:savedEmail!=null && savedPass !=null?DiaryList(): LoginScreen() ,
+          home:ContactListScreen(),
         );
       },
     );
