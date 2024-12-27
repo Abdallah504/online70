@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:online70/logic/cache-helper.dart';
+import 'package:online70/logic/data/cache-helper.dart';
 import 'package:online70/screens/new-screen.dart';
 
 class LoginScreen extends StatefulWidget {

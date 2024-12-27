@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:online70/logic/sql-db.dart';
+import 'package:online70/logic/data/sql-db.dart';
 
 import '../model/note-model.dart';
 

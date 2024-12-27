@@ -2,15 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:online70/logic/cache-helper.dart';
-import 'package:online70/logic/sql-db.dart';
+import 'package:online70/logic/data/cache-helper.dart';
+import 'package:online70/logic/data/sql-db.dart';
+import 'package:online70/logic/statemang/main-app-provider.dart';
 import 'package:online70/model/contact.dart';
 import 'package:online70/model/diary.dart';
 import 'package:online70/screens/contacts/contact-List.dart';
+import 'package:online70/screens/counting-screen.dart';
 import 'package:online70/screens/diary/diary-list.dart';
 import 'package:online70/screens/login-screen.dart';
 import 'package:online70/screens/new-screen.dart';
 import 'package:online70/screens/note-list.dart';
+import 'package:provider/provider.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -45,20 +48,24 @@ class _MyAppState extends State<MyApp> {
   // }
   @override
   Widget build(BuildContext context) {
-    return ScreenUtilInit(
-      designSize: const Size(360, 690),
-      minTextAdapt: true,
-      splitScreenMode: true,
-      builder: (context ,child){
-        return MaterialApp(
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-            useMaterial3: true,
-          ),
-          home:ContactListScreen(),
-        );
-      },
+    return MultiProvider(providers: [
+      ChangeNotifierProvider(create: (context)=>MainAppProvider()..getDataResult())
+    ],
+    child:  ScreenUtilInit(
+        designSize: const Size(360, 690),
+    minTextAdapt: true,
+    splitScreenMode: true,
+    builder: (context ,child){
+    return MaterialApp(
+    title: 'Flutter Demo',
+    theme: ThemeData(
+    colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+    useMaterial3: true,
+    ),
+    home:CountingScreen(),
+    );
+    },
+    ),
     );
   }
 }
