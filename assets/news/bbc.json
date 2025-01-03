@@ -1,0 +1,136 @@
+{
+  "status": "ok",
+  "totalResults": 10,
+  "articles": [
+    {
+      "source": {
+        "id": "bbc-news",
+        "name": "BBC News"
+      },
+      "author": "BBC News",
+      "title": "The Traitors",
+      "description": "The Traitors",
+      "url": "https://www.bbc.co.uk/news/articles/c5ydky8zjwno",
+      "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/6f56/live/cc525610-c794-11ef-9fd6-0be88a764111.jpg",
+      "publishedAt": "2025-01-02T08:07:26.9035533Z",
+      "content": "The Traitors has returned to our screens, with its usual combination of murders, missions and midnight meetings. The number of contestants this year has risen to 25 - ranging from a former British di… [+1326 chars]"
+    },
+    {
+      "source": {
+        "id": "bbc-news",
+        "name": "BBC News"
+      },
+      "author": "BBC News",
+      "title": "New Orleans: What we know about attacker Shamsud-Din Jabbar",
+      "description": "The man who drove into a large crowd in the French Quarter was identified as Shamsud Din Jabbar, a US citizen and Army veteran.",
+      "url": "https://www.bbc.co.uk/news/articles/c205ek63433o",
+      "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/c5c5/live/c0deebf0-c892-11ef-9fd6-0be88a764111.jpg",
+      "publishedAt": "2025-01-02T07:37:25.9047989Z",
+      "content": "At 03:15 local time on New Year's Day, a Ford pick-up truck rammed into crowds gathered on Bourbon Street in the heart of New Orleans' French Quarter.\r\nCCTV footage shows a white, Ford F-150 Lightnin… [+760 chars]"
+    },
+    {
+      "source": {
+        "id": "bbc-news",
+        "name": "BBC News"
+      },
+      "author": "BBC News",
+      "title": "UK's biggest ever dinosaur footprint trackways unearthed",
+      "description": "About 200 footprints made by dinosaurs 166 million years ago have been unearthed in a quarry in Oxfordshire.",
+      "url": "https://www.bbc.co.uk/news/articles/c24nzeqq1l2o",
+      "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/f132/live/faaadac0-bd4c-11ef-a2ca-e99d0c9a24e3.jpg",
+      "publishedAt": "2025-01-02T07:07:15.3887637Z",
+      "content": "The environment they lived in was covered by a warm, shallow lagoon and the dinosaurs left their prints as they ambled across the mud.\r\n\"Something must have happened to preserve these in the fossil r… [+909 chars]"
+    },
+    {
+      "source": {
+        "id": "bbc-news",
+        "name": "BBC News"
+      },
+      "author": "BBC News",
+      "title": "Women say police don't take obscene calls and indecent exposure seriously",
+      "description": "Police are dismissing women's experiences and failing to properly investigate, BBC is told.",
+      "url": "https://www.bbc.co.uk/news/articles/c30nm8dr4g2o",
+      "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/d38f/live/8ff2f570-b89f-11ef-aff0-072ce821b6ab.jpg",
+      "publishedAt": "2025-01-02T06:37:23.5439531Z",
+      "content": "Lara Burns was on holiday in Spain with her family in October 2021 when she received an anonymous phone call. The man at the other end of the line called Lara by her name and then made obscene sexual… [+1451 chars]"
+    },
+    {
+      "source": {
+        "id": "bbc-news",
+        "name": "BBC News"
+      },
+      "author": "BBC News",
+      "title": "Cancers getting diagnosed at earlier stages",
+      "description": "Awareness campaigns and new screening approaches are having an impact, says NHS England.",
+      "url": "https://www.bbc.co.uk/news/articles/cdekxz58ppno",
+      "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/b645/live/a6368c10-c6ce-11ef-9841-b95c66c8b777.jpg",
+      "publishedAt": "2025-01-02T01:52:21.4496507Z",
+      "content": "One person who has benefitted is Paul Nelson who is 72.\r\nHe had no symptoms when he went for a lung health check last summer and was diagnosed with cancer.\r\nHe said he was devastated, but the fact it… [+689 chars]"
+    },
+    {
+      "source": {
+        "id": "bbc-news",
+        "name": "BBC News"
+      },
+      "author": "BBC News",
+      "title": "How the Ukraine War could come to an end in 2025",
+      "description": "Ahead of Trump's second term, talk is turning towards how the conflict might finish - and what it would take from each side",
+      "url": "https://www.bbc.co.uk/news/articles/c2ldpnyewx1o",
+      "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/56d8/live/9f42a4a0-bece-11ef-a2ca-e99d0c9a24e3.png",
+      "publishedAt": "2025-01-02T01:22:20.3417601Z",
+      "content": "In the absence of agreement on Ukraine's long term future, its allies are doing what they can to bolster its defences.\r\nIn December, Nato's secretary general, Mark Rutte, said \"everything\" was being … [+2108 chars]"
+    },
+    {
+      "source": {
+        "id": "bbc-news",
+        "name": "BBC News"
+      },
+      "author": "BBC News",
+      "title": "UK weather: Three days of heavy snow forecast across UK",
+      "description": "Rural communities could be cut off and schools forced to close, with up to 20cm of snow forecast in places, the Met Office says.",
+      "url": "https://www.bbc.co.uk/news/articles/cp3104v552jo",
+      "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/9270/live/9ce846a0-c8a2-11ef-abc5-735812319d60.jpg",
+      "publishedAt": "2025-01-02T01:07:18.5757261Z",
+      "content": "The snow warning starts at noon on Saturday until 09:00 GMT on Monday and covers all regions of England apart from the South West, the majority of Wales and parts of southern Scotland.\r\nAbout 5cm of … [+1076 chars]"
+    },
+    {
+      "source": {
+        "id": "bbc-news",
+        "name": "BBC News"
+      },
+      "author": "BBC News",
+      "title": "Newspaper headlines: 'America under attack' and crack down on traffickers",
+      "description": "Coverage of an attack in New Orleans which has killed at least 15 people dominates Thursday's front pages.",
+      "url": "https://www.bbc.co.uk/news/articles/c5y8w582z6po",
+      "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/9495/live/94f17ed0-c89d-11ef-87df-d575b9a434a4.jpg",
+      "publishedAt": "2025-01-02T00:52:21.4363809Z",
+      "content": "Image caption, Like many of Thursday's newspapers, the Times is leading on an attack which left at least 15 people dead in New Orleans on New Year's Day. A truck ploughed into revellers in the city's… [+285 chars]"
+    },
+    {
+      "source": {
+        "id": "bbc-news",
+        "name": "BBC News"
+      },
+      "author": "BBC News",
+      "title": "Montenegro: Manhunt after mass shooting leaves ten dead including children",
+      "description": "Police search for a gunman who killed ten people including two children in the south of the country.",
+      "url": "https://www.bbc.co.uk/news/articles/c2kx7qj8z4wo",
+      "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/41d3/live/73f70250-c888-11ef-9fd6-0be88a764111.jpg",
+      "publishedAt": "2025-01-01T23:37:20.4823878Z",
+      "content": "The gunman killed members of his own family, two of the restaurant owner's children and also the owner, according to Interior Minister Danilo Saranovic.\r\nMr Saranovic called the incident a \"consequen… [+390 chars]"
+    },
+    {
+      "source": {
+        "id": "bbc-news",
+        "name": "BBC News"
+      },
+      "author": "BBC News",
+      "title": "Police probing cybertruck explosion at Trump Las Vegas hotel",
+      "description": "The driver was killed and seven people were injured in the explosion, police said without naming any suspects.",
+      "url": "https://www.bbc.co.uk/news/articles/cz7qd97eyp0o",
+      "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/946c/live/ca74f490-c886-11ef-a742-03866d7d3d8e.jpg",
+      "publishedAt": "2025-01-01T21:37:25.559407Z",
+      "content": "Sheriff Kevin McMahill of the Las Vegas Police Department said officials were \"well aware of what happened in New Orleans\", referring to the terrorist attack that included improvised explosive device… [+1351 chars]"
+    }
+  ]
+}
