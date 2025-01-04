@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:online70/api/data/dio-helper.dart';
 import 'package:online70/api/screen/bbc-screen.dart';
 import 'package:online70/logic/auth/auth_cubit.dart';
 import 'package:online70/logic/counters/counters_bloc.dart';
@@ -44,6 +45,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  final dioHelper = DioImplementation();
   // var cache = CacheHelper();
   // dynamic savedEmail;
   // dynamic savedPass;
@@ -60,7 +62,7 @@ class _MyAppState extends State<MyApp> {
       BlocProvider(create: (context)=> CountingCubit()),
       BlocProvider(create: (context)=> AuthCubit()),
       BlocProvider(create: (context)=> CountersBloc()),
-      BlocProvider(create: (context)=> BbcCubit()..gettingNews(context)..gettingTrump(context))
+      BlocProvider(create: (context)=> BbcCubit(dioHelper)..gettingNews(context))
     ],
         child: ScreenUtilInit(
           designSize: const Size(360, 690),

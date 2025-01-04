@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online70/api/logic/bbc_cubit.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../model/bbc-model.dart';
 
 class BbcScreen extends StatefulWidget {
   const BbcScreen({super.key});
@@ -10,6 +13,7 @@ class BbcScreen extends StatefulWidget {
 }
 
 class _BbcScreenState extends State<BbcScreen> {
+
   @override
   Widget build(BuildContext context) {
     final news = context.read<BbcCubit>();
@@ -29,30 +33,35 @@ class _BbcScreenState extends State<BbcScreen> {
             body: SingleChildScrollView(
               child: Column(
                 children: [
-                  state is DataTrump || news.trumpModel!=null?  Container(
-                    height: 200,
-                    child: ListView.builder(
-                        itemCount: news.trumpModel!.articles!.length,
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        physics: BouncingScrollPhysics(),
-                        itemBuilder: (context,index){
-                          return Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-                            child: Container(
-                              height: 150,
-                              width: 150,
-                              child: Image.network(news.trumpModel!.articles![index].urlToImage.toString(),
-                              errorBuilder: (context, error ,StackTrace){
-                                return Image.asset('assets/electro.png');
-                              }
-                              ),
-                            )
-                          );
-                        }),
-                  ):SizedBox(),
-                  SizedBox(height: 20,),
-                  state is DataReach || news.bbcModel!=null?  ListView.builder(
+                  // state is DataTrump || news.bbcModel!=null?  Container(
+                  //   height: 200,
+                  //   child: ListView.builder(
+                  //       itemCount: news.bbcModel!.articles!.length,
+                  //       scrollDirection: Axis.horizontal,
+                  //       shrinkWrap: true,
+                  //       physics: BouncingScrollPhysics(),
+                  //       itemBuilder: (context,index){
+                  //         return Padding(
+                  //           padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+                  //           child: InkWell(
+                  //             onTap: (){
+                  //               _launchUrl(Uri.parse(news.bbcModel!.articles![index].url.toString()));
+                  //             },
+                  //             child: Container(
+                  //               height: 150,
+                  //               width: 150,
+                  //               child: Image.network(news.bbcModel!.articles![index].urlToImage.toString(),
+                  //               errorBuilder: (context, error ,StackTrace){
+                  //                 return Image.asset('assets/electro.png');
+                  //               }
+                  //               ),
+                  //             ),
+                  //           )
+                  //         );
+                  //       }),
+                  // ):SizedBox(),
+                  // SizedBox(height: 20,),
+                  state is DataReach?  ListView.builder(
                       itemCount: news.bbcModel!.articles!.length,
                       shrinkWrap: true,
                       physics: BouncingScrollPhysics(),
@@ -60,6 +69,9 @@ class _BbcScreenState extends State<BbcScreen> {
                         return Padding(
                           padding: EdgeInsets.symmetric(horizontal: 20,vertical: 10),
                           child: ListTile(
+                            onTap: (){
+                              _launchUrl(Uri.parse(news.bbcModel!.articles![index].url.toString()));
+                            },
                             leading: Image.network(news.bbcModel!.articles![index].urlToImage.toString()),
                             title: Text(news.bbcModel!.articles![index].title.toString()),
                             subtitle: Text(news.bbcModel!.articles![index].description.toString()),
@@ -73,5 +85,10 @@ class _BbcScreenState extends State<BbcScreen> {
             ),
           );
         }, listener: (context,state){});
+  }
+  Future<void> _launchUrl(dynamic url) async {
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
+    }
   }
 }
