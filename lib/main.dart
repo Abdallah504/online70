@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:online70/api/screen/bbc-screen.dart';
 import 'package:online70/logic/auth/auth_cubit.dart';
 import 'package:online70/logic/counters/counters_bloc.dart';
 import 'package:online70/logic/counting/counting_cubit.dart';
@@ -19,6 +20,8 @@ import 'package:online70/screens/login-screen.dart';
 import 'package:online70/screens/new-screen.dart';
 import 'package:online70/screens/note-list.dart';
 import 'package:provider/provider.dart';
+
+import 'api/logic/bbc_cubit.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
@@ -56,7 +59,8 @@ class _MyAppState extends State<MyApp> {
     return MultiBlocProvider(providers: [
       BlocProvider(create: (context)=> CountingCubit()),
       BlocProvider(create: (context)=> AuthCubit()),
-      BlocProvider(create: (context)=> CountersBloc())
+      BlocProvider(create: (context)=> CountersBloc()),
+      BlocProvider(create: (context)=> BbcCubit()..gettingNews(context)..gettingTrump(context))
     ],
         child: ScreenUtilInit(
           designSize: const Size(360, 690),
@@ -69,7 +73,7 @@ class _MyAppState extends State<MyApp> {
                 colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
                 useMaterial3: true,
               ),
-              home:CountingScreen(),
+              home:BbcScreen(),
             );
           },
         ),);
