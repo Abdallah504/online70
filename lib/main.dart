@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -21,9 +22,10 @@ import 'package:online70/screens/login-screen.dart';
 import 'package:online70/screens/new-screen.dart';
 import 'package:online70/screens/note-list.dart';
 import 'package:provider/provider.dart';
+import 'dart:io';
 
 import 'api/logic/bbc_cubit.dart';
-
+import 'package:easy_localization/easy_localization.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   await CacheHelper.cacheIntialization();
@@ -34,7 +36,24 @@ void main() async{
   Hive.registerAdapter(ContactAdapter());
   //await Hive.openBox<Diary>('diary');
   await Hive.openBox<Contact>('contact');
-  runApp(const MyApp());
+  await EasyLocalization.ensureInitialized();
+
+
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.landscapeRight
+  ]).then((v){
+    runApp(
+      EasyLocalization(
+          supportedLocales: [Locale('en'), Locale('ar')],
+          path: 'translations', // <-- change the path of the translation files
+          fallbackLocale: Locale('en'),
+          child: MyApp()
+      ),
+    );
+  });
+
+
 }
 
 class MyApp extends StatefulWidget {
@@ -46,6 +65,8 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   final dioHelper = DioImplementation();
+
+
   // var cache = CacheHelper();
   // dynamic savedEmail;
   // dynamic savedPass;
@@ -58,6 +79,7 @@ class _MyAppState extends State<MyApp> {
   // }
   @override
   Widget build(BuildContext context) {
+
     return MultiBlocProvider(providers: [
       BlocProvider(create: (context)=> CountingCubit()),
       BlocProvider(create: (context)=> AuthCubit()),
@@ -71,6 +93,9 @@ class _MyAppState extends State<MyApp> {
           builder: (context ,child){
             return MaterialApp(
               title: 'Flutter Demo',
+              localizationsDelegates: context.localizationDelegates,
+              supportedLocales: context.supportedLocales,
+              locale: context.locale,
               theme: ThemeData(
                 colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
                 useMaterial3: true,

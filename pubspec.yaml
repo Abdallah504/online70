@@ -51,6 +51,7 @@ dependencies:
   flutter_bloc: ^8.1.6
   http: ^1.2.2
   dio: ^5.7.0
+  easy_localization: ^3.0.7
 
 dev_dependencies:
   flutter_test:

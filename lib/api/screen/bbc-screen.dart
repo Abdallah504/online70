@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online70/api/logic/bbc_cubit.dart';
@@ -20,14 +21,24 @@ class _BbcScreenState extends State<BbcScreen> {
     return BlocConsumer<BbcCubit,BbcState>(
         builder: (context,state){
           return Scaffold(
+            floatingActionButton: FloatingActionButton(
+                onPressed: (){
+                  if(context.locale.languageCode == 'en'){
+                    context.setLocale(Locale('ar'));
+                  }else{
+                    context.setLocale(Locale('en'));
+                  }
+                },
+            child: Icon(Icons.wordpress),
+            ),
             appBar: AppBar(
               backgroundColor: Colors.red,
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text('BBC',style: TextStyle(color: Colors.white),),
-                  Text('News',style: TextStyle(color: Colors.black),)
+                  Text('bbc'.tr(),style: TextStyle(color: Colors.white),),
+                  Text('news'.tr(),style: TextStyle(color: Colors.black),)
                 ],),
             ),
             body: SingleChildScrollView(
@@ -61,6 +72,8 @@ class _BbcScreenState extends State<BbcScreen> {
                   //       }),
                   // ):SizedBox(),
                   // SizedBox(height: 20,),
+
+                  // lang en ar
                   state is DataReach?  ListView.builder(
                       itemCount: news.bbcModel!.articles!.length,
                       shrinkWrap: true,
