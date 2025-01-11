@@ -4,8 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:online70/api/data/dio-helper.dart';
-import 'package:online70/api/screen/bbc-screen.dart';
+import 'package:online70/api/controller/di.dart';
+
+import 'package:online70/api/view/screen/bbc-screen.dart';
 import 'package:online70/logic/auth/auth_cubit.dart';
 import 'package:online70/logic/counters/counters_bloc.dart';
 import 'package:online70/logic/counting/counting_cubit.dart';
@@ -24,10 +25,14 @@ import 'package:online70/screens/note-list.dart';
 import 'package:provider/provider.dart';
 import 'dart:io';
 
-import 'api/logic/bbc_cubit.dart';
+import 'api/controller/data/dio-helper.dart';
+import 'api/controller/logg/logic/bbc_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
+
+import 'api/controller/logic/bbc_cubit.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
+  await init();
   await CacheHelper.cacheIntialization();
   // SqlDB sqlDB = SqlDB();
   // await sqlDB.db;
@@ -64,7 +69,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  final dioHelper = DioImplementation();
+
 
 
   // var cache = CacheHelper();
@@ -84,7 +89,7 @@ class _MyAppState extends State<MyApp> {
       BlocProvider(create: (context)=> CountingCubit()),
       BlocProvider(create: (context)=> AuthCubit()),
       BlocProvider(create: (context)=> CountersBloc()),
-      BlocProvider(create: (context)=> BbcCubit(dioHelper)..gettingNews(context))
+      BlocProvider(create: (context)=> di<BbcCubit>())
     ],
         child: ScreenUtilInit(
           designSize: const Size(360, 690),

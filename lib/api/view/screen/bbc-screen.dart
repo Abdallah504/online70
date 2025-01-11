@@ -1,10 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online70/api/logic/bbc_cubit.dart';
+
 import 'package:url_launcher/url_launcher.dart';
 
-import '../model/bbc-model.dart';
+
+import '../../model/bbc-model.dart';
 
 class BbcScreen extends StatefulWidget {
   const BbcScreen({super.key});

@@ -1,4 +1,8 @@
-part of 'bbc_cubit.dart';
+part of '../../../logic/bbc_cubit.dart';
+
+
+
+
 
 @immutable
 sealed class BbcState {}

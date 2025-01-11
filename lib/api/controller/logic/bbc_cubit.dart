@@ -4,19 +4,25 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
-import 'package:online70/api/data/dio-helper.dart';
+
 import 'package:online70/api/model/bbc-model.dart';
 import 'package:online70/api/model/trump-model.dart';
 
-import '../data/end-points.dart';
-part 'bbc_state.dart';
+import '../data/repo.dart';
+
+
+
+
+
+
 
 class BbcCubit extends Cubit<BbcState> {
-  BbcCubit(this.dioHelper) : super(BbcInitial());
+  BbcCubit(this.reporesetory) : super(BbcInitial());
   BbcModel? bbcModel;
 TrumpModel?trumpModel;
+final Reporesetory reporesetory;
 
-final DioHelper dioHelper;
+
 
  final  url = 'https://newsapi.org/v2/top-headlines?sources=bbc-news&apiKey=a081436a7034494a92c8920802ecd853';
  final urlTrump = 'https://newsapi.org/v2/top-headlines?q=trump&apiKey=a081436a7034494a92c8920802ecd853';
@@ -24,9 +30,8 @@ final DioHelper dioHelper;
 
  Future<void>gettingNews(context)async{
    try{
-   return await dioHelper.getData(url: bbcNews,
-   ).then((v){
-       if(v.data !=null){
+   return await reporesetory.getData().then((v){
+       if(v !=null){
          bbcModel = BbcModel.fromJson(v.data);
          emit(DataReach());
        }else{
