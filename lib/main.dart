@@ -20,19 +20,19 @@ import 'package:online70/screens/contacts/contact-List.dart';
 import 'package:online70/screens/counting-screen.dart';
 import 'package:online70/screens/diary/diary-list.dart';
 import 'package:online70/screens/login-screen.dart';
+import 'package:online70/screens/map-screen.dart';
 import 'package:online70/screens/new-screen.dart';
 import 'package:online70/screens/note-list.dart';
 import 'package:provider/provider.dart';
 import 'dart:io';
 
 import 'api/controller/data/dio-helper.dart';
-import 'api/controller/logg/logic/bbc_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 import 'api/controller/logic/bbc_cubit.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  await init();
+  //await init();
   await CacheHelper.cacheIntialization();
   // SqlDB sqlDB = SqlDB();
   // await sqlDB.db;
@@ -41,7 +41,7 @@ void main() async{
   Hive.registerAdapter(ContactAdapter());
   //await Hive.openBox<Diary>('diary');
   await Hive.openBox<Contact>('contact');
-  await EasyLocalization.ensureInitialized();
+  //await EasyLocalization.ensureInitialized();
 
 
   SystemChrome.setPreferredOrientations([
@@ -49,12 +49,7 @@ void main() async{
     DeviceOrientation.landscapeRight
   ]).then((v){
     runApp(
-      EasyLocalization(
-          supportedLocales: [Locale('en'), Locale('ar')],
-          path: 'translations', // <-- change the path of the translation files
-          fallbackLocale: Locale('en'),
-          child: MyApp()
-      ),
+      MyApp()
     );
   });
 
@@ -89,7 +84,6 @@ class _MyAppState extends State<MyApp> {
       BlocProvider(create: (context)=> CountingCubit()),
       BlocProvider(create: (context)=> AuthCubit()),
       BlocProvider(create: (context)=> CountersBloc()),
-      BlocProvider(create: (context)=> di<BbcCubit>())
     ],
         child: ScreenUtilInit(
           designSize: const Size(360, 690),
@@ -98,14 +92,14 @@ class _MyAppState extends State<MyApp> {
           builder: (context ,child){
             return MaterialApp(
               title: 'Flutter Demo',
-              localizationsDelegates: context.localizationDelegates,
-              supportedLocales: context.supportedLocales,
-              locale: context.locale,
+              // localizationsDelegates: context.localizationDelegates,
+              // supportedLocales: context.supportedLocales,
+              // locale: context.locale,
               theme: ThemeData(
                 colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
                 useMaterial3: true,
               ),
-              home:BbcScreen(),
+              home:MapsScreen(),
             );
           },
         ),);
