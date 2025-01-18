@@ -30,6 +30,7 @@ import 'api/controller/data/dio-helper.dart';
 import 'package:easy_localization/easy_localization.dart';
 
 import 'api/controller/logic/bbc_cubit.dart';
+import 'media-screen.dart';
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   //await init();
@@ -44,15 +45,16 @@ void main() async{
   //await EasyLocalization.ensureInitialized();
 
 
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.landscapeLeft,
-    DeviceOrientation.landscapeRight
-  ]).then((v){
-    runApp(
+  // SystemChrome.setPreferredOrientations([
+  //   // DeviceOrientation.landscapeLeft,
+  //   // DeviceOrientation.landscapeRight,
+  //   DeviceOrientation.portraitUp
+  // ]).then((v){
+  //
+  // });
+  runApp(
       MyApp()
-    );
-  });
-
+  );
 
 }
 
@@ -99,7 +101,7 @@ class _MyAppState extends State<MyApp> {
                 colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
                 useMaterial3: true,
               ),
-              home:MapsScreen(),
+              home:MediaScreen(),
             );
           },
         ),);

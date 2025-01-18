@@ -56,6 +56,9 @@ dependencies:
   google_maps_flutter: ^2.10.0
   geolocator: ^13.0.2
   permission_handler: ^11.3.1
+  video_player: ^2.9.2
+  just_audio: ^0.9.43
+  file_picker: ^8.1.7
 
 dev_dependencies:
   flutter_test:
