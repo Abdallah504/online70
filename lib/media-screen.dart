@@ -17,9 +17,11 @@ class _MediaScreenState extends State<MediaScreen> {
   final ImagePicker _picker  =ImagePicker();
   XFile? _pickedFile;
   VideoPlayerController? _videoPlayerController;
-  AudioPlayer? _audioPlayer;
+  late AudioPlayer _audioPlayer;
   bool isAudioPlaying = false;
   String? _pickfilePath;
+
+
 
   Future<void>pickImage()async{
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
@@ -55,8 +57,8 @@ class _MediaScreenState extends State<MediaScreen> {
         _pickfilePath = filePath;
         print('file : $filePath');
       });
-      await _audioPlayer?.setAudioSource(AudioSource.file(filePath!)).then((v){
-        _audioPlayer?.play();
+      await _audioPlayer.setAudioSource(AudioSource.file(filePath!)).then((v){
+        _audioPlayer.play();
         print('I am playing');
       });
 
@@ -67,7 +69,11 @@ class _MediaScreenState extends State<MediaScreen> {
     }
   }
 
-
+@override
+  void initState() {
+    _audioPlayer = AudioPlayer();
+    super.initState();
+  }
 
 @override
   void dispose() {
