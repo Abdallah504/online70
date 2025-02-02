@@ -112,7 +112,7 @@ class _MediaScreenState extends State<MediaScreen> {
                         width: 200,
                       ),
             
-            Row(
+            Column(
               children: [
                 ElevatedButton(onPressed: pickImage, child: Text('Pick image')),
                 SizedBox(width: 50,),

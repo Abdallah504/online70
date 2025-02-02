@@ -14,69 +14,63 @@ class MapsScreen extends StatefulWidget {
 
 class _MapsScreenState extends State<MapsScreen> {
   late GoogleMapController _mapController;
-
-  LatLng _initialPosition = const LatLng(37.7749, -122.4194);
- late LatLng userPostion;
-
   late Position _currentPosition;
-  final Set<Marker> _markers = {};
+  final Set<Marker>_markers = {};
+ LatLng _initialPosition = const LatLng(123.33, -120.933);
 
-  @override
+@override
   void initState() {
-    _getuserlocation();
+    _getUserLocation();
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _getuserlocation,
-        label: const Text('To the lake!'),
-        icon: const Icon(Icons.directions_boat),
+      floatingActionButton: FloatingActionButton(onPressed: _getUserLocation,
+      child: Icon(Icons.pin_drop_outlined),
       ),
-     body: GoogleMap(
-         mapType: MapType.normal,
-         initialCameraPosition: CameraPosition(target: _initialPosition,zoom: 10
-
-         ),
-       markers: _markers,
-       onMapCreated: (controller)=>_mapController = controller,
-
-
-       myLocationEnabled: true,
-       myLocationButtonEnabled: true
-
-     ),
+      body: GoogleMap(
+          mapType: MapType.satellite,
+          initialCameraPosition: CameraPosition(target: _initialPosition,zoom: 10),
+      markers: _markers,
+        onMapCreated: (controller)=> _mapController,
+        myLocationEnabled: true,
+        myLocationButtonEnabled: true,
+      ),
     );
-  }
-Future<void> _getuserlocation()async{
-    Permission.location.request();
-
-    if(await Geolocator.isLocationServiceEnabled()){
-      Position positionnnn = await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high
-      );
-      setState(() {
-        _currentPosition = positionnnn;
-        _initialPosition = LatLng(positionnnn.latitude, positionnnn.longitude);
-        //userPostion = LatLng(positionnnn.latitude, positionnnn.longitude);
-        _markers.add(
-          Marker(markerId: MarkerId('current_location'),
-          position: _initialPosition,
-            infoWindow: InfoWindow(title: 'user Location')
-          )
-
-        );
-      });
-      _mapController.animateCamera(
-        CameraUpdate.newCameraPosition(CameraPosition(
-          target: _initialPosition,
-          zoom: 14
-        ))
-      );
-    }else{
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Please Enable location service')));
-    }
 
 }
+Future<void>_getUserLocation()async{
+Permission.location.request();
+
+if(await Geolocator.isLocationServiceEnabled()){
+  Position positionnn = await Geolocator.getCurrentPosition(
+    desiredAccuracy: LocationAccuracy.high
+  );
+
+  setState(() {
+    _currentPosition = positionnn;
+    _initialPosition = LatLng(positionnn.latitude, positionnn.longitude);
+
+    _markers.add(
+      Marker(markerId: MarkerId(
+        'current-user-location'
+      ),
+        position: _initialPosition,
+        infoWindow: InfoWindow(title: 'User Location')
+      )
+    );
+  });
+  _mapController.animateCamera(
+    CameraUpdate.newCameraPosition(CameraPosition(target: _initialPosition,
+    zoom: 14
+    ))
+  );
+}else{
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Please Enable Location Service')));
+}
+
+}
+
+
 }
