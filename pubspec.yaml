@@ -59,6 +59,7 @@ dependencies:
   video_player: ^2.9.2
   just_audio: ^0.9.43
   file_picker: ^8.1.7
+  flutter_svg: ^2.0.17
 
 dev_dependencies:
   flutter_test:

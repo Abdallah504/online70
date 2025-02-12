@@ -19,6 +19,7 @@ import 'package:online70/screens/auth-screen.dart';
 import 'package:online70/screens/contacts/contact-List.dart';
 import 'package:online70/screens/counting-screen.dart';
 import 'package:online70/screens/diary/diary-list.dart';
+import 'package:online70/screens/ecommerce/main-screen.dart';
 import 'package:online70/screens/login-screen.dart';
 import 'package:online70/screens/map-screen.dart';
 import 'package:online70/screens/new-screen.dart';
@@ -101,7 +102,7 @@ class _MyAppState extends State<MyApp> {
                 colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
                 useMaterial3: true,
               ),
-              home:MediaScreen(),
+              home:MainScreen(),
             );
           },
         ),);
